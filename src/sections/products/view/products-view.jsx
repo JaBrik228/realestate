@@ -1,11 +1,12 @@
-import { useState } from 'react';
+// import axios from 'axios';
+import { useState, /* useEffect */ } from 'react';
 
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
-import { products } from 'src/_mock/products';
+// import { products } from 'src/_mock/products';
 
 import ProductCard from '../product-card';
 import ProductSort from '../product-sort';
@@ -14,8 +15,31 @@ import ProductCartWidget from '../product-cart-widget';
 
 // ----------------------------------------------------------------------
 
+const bildings = [
+  {
+    boardId: 2, 
+    images: [
+      'IMG-X7362712_1.jpg'
+    ],
+    address: {
+      city: 'Kawartha Lakes',
+      streetNumber: '126',
+      streetName: 'King',
+      streetSuffix: 'St',
+      state: 'Ontario'
+    },
+    listPrice: '1280000.00'
+  }
+]
+
 export default function ProductsView() {
   const [openFilter, setOpenFilter] = useState(false);
+  // const [objects, setObjects] = useState();
+
+  // useEffect(() => {
+  //   setObjects(bildings);
+
+  // }, []);
 
   const handleOpenFilter = () => {
     setOpenFilter(true);
@@ -50,8 +74,8 @@ export default function ProductsView() {
       </Stack>
 
       <Grid container spacing={3}>
-        {products.map((product) => (
-          <Grid key={product.id} xs={12} sm={6} md={3}>
+        {bildings.map((product, i) => (
+          <Grid key={i} xs={12} sm={6} md={3}>
             <ProductCard product={product} />
           </Grid>
         ))}
